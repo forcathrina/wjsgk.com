@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <title>Quote App</title>
+</head>
+
+<body>
+  <h1>게시판 만들기</h1>
+
+  <form action="/create" method="POST">
+    <input type="text" placeholder="name" name="name" />
+    <input type="text" placeholder="quote" name="quote" />
+    <button id="createbutton" type="submit">Create</button>
+  </form>
+
+
+  <h2> Quotes </h2>
+
+    <table>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>quote</th>
+        <th>delete</th>
+        <th>update</th>
+      </tr>
+      <% for(var i=0; i < quotes.length; i++) {%>
+        <tr>
+          <th><span>
+              <%= quotes[i]._id %>
+            </span></th>
+          <th><span>
+              <%= quotes[i].name %>
+            </span></th>
+          <th><span>
+              <%= quotes[i].quote %>
+            </span></th>
+          <th>
+            <button class=delete_id data_id="<%= quotes[i]._id %>">X</button>
+          </th>
+          <th>
+            <button class=update_id data_id="<%= quotes[i]._id %>">↺</button>
+          </th>
+        </tr>
+        <% } %>
+    </table>
+  
+
+
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="jquery.js"></script>
+</body>
+
+</html>
