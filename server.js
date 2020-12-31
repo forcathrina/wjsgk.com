@@ -51,7 +51,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       )
         .then(result => {
           if (result.deletedCount === 0) {
-            console.log(userId)
+            //console.log(userId)
           }
           res.sendStatus(200)
         })
@@ -68,7 +68,7 @@ MongoClient.connect(connectionString, { useUnifiedTopology: true })
       )
         .then(result => {
           if (result.deletedCount === 0) {
-            console.log(userId)
+            //console.log(userId)
           }
           res.sendStatus(200)
         })

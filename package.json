@@ -1,0 +1,26 @@
+{
+  "name": "wjsgk.com",
+  "version": "1.0.0",
+  "description": "ejs_mongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "first crud",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forcathrina/wjsgk.com.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forcathrina/wjsgk.com/issues"
+  },
+  "homepage": "https://github.com/forcathrina/wjsgk.com#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.11.9"
+  }
+}
