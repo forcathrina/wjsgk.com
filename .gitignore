@@ -8,3 +8,4 @@ nodejs_mysql_copy/node_modules
 nodejs_mysql_copy/REACT/app/README.md
 nodejs_mysql_copy/.gitignore
 nodejs_mysql_copy/REACT/app/.gitignore
+nodejs_mysql_copy/REACT/app/node_modules
