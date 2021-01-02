@@ -32,7 +32,7 @@ class TextList extends Component {
     }).then(() => {
       let updatedusers = [...this.state.users].filter(i => i.id !== id);
       this.setState({ users: updatedusers });
-      
+
     });
   }
 
@@ -42,13 +42,13 @@ class TextList extends Component {
     if (isLoading) {
       return <p>Loading...</p>;
     }
-//<td style={{ whiteSpace: 'nowrap' }}>{user.username}</td> ?
+    //<td style={{ whiteSpace: 'nowrap' }}>{user.username}</td> ?
     const userList = users.map(user => {
       return <tr key={user.id}>
         <td>{user.username}</td>
         <td>{user.usertext}</td>
         <td>
-          <Button size="sm" color="primary" tag={Link} to={"/data/" + user.id}>수정</Button>   
+          <Button size="sm" color="primary" tag={Link} to={"/data/" + user.id}>수정</Button>
           <Button className="ml-3" size="sm" color="danger" onClick={() => this.remove(user.id).then(window.location.reload())}>삭제</Button>
         </td>
       </tr>
@@ -61,18 +61,18 @@ class TextList extends Component {
           <Row className="mt-3">
             <Button className="ml-3" color="success" tag={Link} to="/data/new">새 글 쓰기</Button>
           </Row>
-            <Table className="mt-4">
-              <thead>
-                <tr>
-                  <th width="20%">아이디</th>
-                  <th width="60%">글</th>
-                  <th>수정</th>
-                </tr>
-              </thead>
-              <tbody>
-                {userList}
-              </tbody>
-            </Table>
+          <Table className="mt-4">
+            <thead>
+              <tr>
+                <th width="20%">아이디</th>
+                <th width="40%">글</th>
+                <th>수정</th>
+              </tr>
+            </thead>
+            <tbody>
+              {userList}
+            </tbody>
+          </Table>
         </Container>
       </div>
     );

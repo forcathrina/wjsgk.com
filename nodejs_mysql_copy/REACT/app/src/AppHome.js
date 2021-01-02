@@ -14,7 +14,7 @@ class Home extends Component {
         <CardBody>
           <CardTitle tag="h5">게시판 만들기</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">김승직</CardSubtitle>
-          <CardText>설명을 써야 하는 공간</CardText>
+          <CardText> </CardText>
           <Button href="https://github.com/forcathrina/wjsgk.com/releases" target="_blank">Github</Button>
         </CardBody>
       </Card>
