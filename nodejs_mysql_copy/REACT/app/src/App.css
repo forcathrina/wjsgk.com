@@ -66,7 +66,7 @@
 
 
 :root {
-  --border-size: 0.125rem;
+  --border-size: 0.05rem;
   --duration: 250ms;
   --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
   --font-family: monospace;
