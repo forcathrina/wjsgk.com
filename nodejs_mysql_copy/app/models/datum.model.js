@@ -12,7 +12,10 @@ module.exports = (sequelize, Sequelize) => {
 	  },
 	  usertext: {
 		  type: Sequelize.STRING
-  	}
+		},
+		usertitle: {
+			type: Sequelize.STRING
+		}
 	});//여기 수정
 	
 	return Datum;

@@ -1,39 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
+
+
+
 
 .App {
-  text-align: center;
+  /* font-family: Avenir; */
+  font-family: "Lato", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.styleCard {
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px #ccc;
+  color: #253b56;
+  margin: 12px 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+
+.styleImage {
+  background-color: lightGray;
+  border-radius: 8px 8px 0 0;
+  max-height: 140px;
+  overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+
+
+.styleCardContent {
+  padding: 4px 16px 0px 16px;
+}
+
+
+.styleCardName {
+  color: #8294aa;
+  font-size: 10pt;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 18px 30px;
+  float: right;
+}
+
+.styleCardTitle {
+  /* font-family: Avenir-Heavy; */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 19pt;
+  font-weight: 600;
+  margin: 12px 0px 0px 0px;
+}
+
+.styleCardText {
+  font-size: 14;
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 20px 0 10px 0;
+}
+
+
+
+
+.bw {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+
+
+
+:root {
+  --border-size: 0.125rem;
+  --duration: 250ms;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --font-family: monospace;
+  --color-primary: white;
+  --color-secondary: black;
+  --color-tertiary: dodgerblue;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --space: 0.2rem;
+}
+
+.CardButton {
+  margin : 20px 20px 20px 170px;
+  
+  
+}
+
+
+.multi-button {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  width: 100%;
+  box-shadow: var(--shadow) 4px 4px;
+  
+}
+
+.multi-button button {
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  padding: calc(var(--space) / 1.125) var(--space) var(--space);
+  border: var(--border-size) solid black;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  font-size: 1.5rem;
+  font-family: var(--font-family);
+  text-transform: lowercase;
+  text-shadow: var(--shadow) 2px 2px;
+  transition: flex-grow var(--duration) var(--ease);
+}
+
+.multi-button button + button {
+  border-left: var(--border-size) solid black;
+  margin-left: calc(var(--border-size) * -1);
+}
+
+.multi-button button:hover,
+.multi-button button:focus {
+  flex-grow: 2;
   color: white;
+  outline: none;
+  text-shadow: none;
+  background-color: var(--color-secondary);
 }
 
-.App-link {
-  color: #61dafb;
+.multi-button button:focus {
+  outline: var(--border-size) dashed var(--color-primary);
+  outline-offset: calc(var(--border-size) * -3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.multi-button:hover button:focus:not(:hover) {
+  flex-grow: 1;
+  color: var(--color-secondary);
+  background-color: var(--color-primary);
+  outline-color: var(--color-tertiary);
 }
+
+.multi-button button:active {
+  transform: translateY(var(--border-size));
+}
+

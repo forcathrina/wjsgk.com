@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
 import AppNavbar from './AppNavbar';
-import {Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
+import {Card, CardText, CardBody, CardTitle, CardSubtitle, Button} from 'reactstrap';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 

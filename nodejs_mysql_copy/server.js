@@ -12,7 +12,7 @@ const router = require('./app/routers/router.js');
 
 app.use(bodyParser.json());
 
-//>?????
+
 app.use(express.static('resources'));
 
 const cors = require('cors')
@@ -21,7 +21,7 @@ const corsOptions = {
   optionsSuccessStatus: 200
 }
 app.use(cors(corsOptions));
-//?????
+
 
 
 app.use('/', router);

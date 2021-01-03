@@ -8,13 +8,15 @@ class TextEdit extends Component {
 
   emptyuser = {
     username: '',
-    usertext: ''
+    usertext: '',
+		usertitle: ''
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      item: this.emptyuser
+      item: this.emptyuser,
+      selectedFile: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,13 +34,16 @@ class TextEdit extends Component {
     const value = target.value;
     const name = target.name;
     let item = {...this.state.item};
+    //let files = event.target.files;
     item[name] = value;
-    this.setState({item});
+    this.setState({item}); //위험
   }
 
   async handleSubmit(event) {
     event.preventDefault();
     const {item} = this.state;
+    const formData = new FormData();
+    formData.append('file', this.state.selectedFile);
 
     await fetch('/api/datum', {
       method: (item.id) ? 'PUT' : 'POST',
@@ -47,8 +52,8 @@ class TextEdit extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(item),
-    });
-    this.props.history.push('/data');
+      redirect: 'follow'
+    }).then(() => this.props.history.push('/data'))
   }
 
   render() {
@@ -66,11 +71,19 @@ class TextEdit extends Component {
                    onChange={this.handleChange} autoComplete="username"/>
           </FormGroup>
           <FormGroup>
+            <Label for="usertitle">제목</Label>
+            <Input type="text" name="usertitle" id="usertitle" value={item.usertitle || ''}
+                   onChange={this.handleChange} autoComplete="usertitle"/>
+          </FormGroup>
+          <FormGroup>
             <Label for="usertext">글</Label>
             <Input type="textarea" name="usertext" id="usertext" value={item.usertext || ''}
                    onChange={this.handleChange} autoComplete="usertext"/>
-             
-
+          </FormGroup>
+          <FormGroup>
+            <Label for="userfile">파일</Label>
+            <Input type="file" name="userfile" id="userfile" 
+             onChange={e => this.handleChange(e)}/>
           </FormGroup>
                     
           <FormGroup>
