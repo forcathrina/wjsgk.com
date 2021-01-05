@@ -37,8 +37,11 @@ class TextEdit extends Component {
     if (this.props.match.params.id !== 'new') {
       const user = await (await fetch(`/api/datum/${this.props.match.params.id}`)).json();
       this.setState({ item: user });
+      this.setState({editid: this.props.match.params.id})
     }
 
+    else{
+      
     let editid = await (await fetch(`/api/editid`)).json();
 
     console.log(editid,'editid const')
@@ -46,6 +49,13 @@ class TextEdit extends Component {
     this.setState({editid: editid})
 
     console.log(this.state.editid,'editid state')
+
+    }
+
+
+    
+
+
 
 
     this.setState({ isLoading: false })
