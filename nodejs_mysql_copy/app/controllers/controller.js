@@ -1,5 +1,8 @@
+const path = require("path");
 
 const db = require('../config/db.config.js');
+
+
 
 const Datum = db.Datum;
 
@@ -7,16 +10,27 @@ const frame = ['id', 'username', 'usertext', 'usertitle']
 
 
 
+exports.editId = (req, res) => {
+
+    const fs1 = require('fs')
+    let jsonData = JSON.parse(fs1.readFileSync('./nodejs_mysql_copy/app/config/autoincrement.json', 'utf-8'))
+    console.log(jsonData)
+    console.log(jsonData.id + 1, 'autoincrement.id + 1')
+    res.status(200).json(jsonData.id + 1)
+}
+
+
 exports.createDatum = (req, res) => {
+
     let user = {};
     
-    console.log('create')
 
     try {
         // Building user object from upoading request's body
         user.username = req.body.username;
         user.usertext = req.body.usertext;
         user.usertitle = req.body.usertitle;
+        
         
 
 
@@ -26,6 +40,18 @@ exports.createDatum = (req, res) => {
             { attributes: frame })
             .then(result => {
                 res.status(200).json(result);
+                console.log(result.dataValues.id, 'result.dataValues.id')
+                var fs = require('fs');
+                fs.writeFile("./nodejs_mysql_copy/app/config/autoincrement.json", JSON.stringify(result.dataValues), function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                });
+
+
+
+
+
             });
     } catch (error) {
         res.status(500).json({
@@ -141,5 +167,4 @@ exports.updateDatum = async (req, res) => {
         });
     }
 }
-
 

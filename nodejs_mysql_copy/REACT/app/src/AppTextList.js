@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 import './App.css';
-import { Col, Row, Container } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import {  Row, Container } from 'reactstrap';
+import { Link,  } from 'react-router-dom';
 //, CardBody Button, , Table,  
-// ,
+// ,withRouterCol
 
 import AppNavbar from './AppNavbar';
 
@@ -15,27 +15,16 @@ import AppNavbar from './AppNavbar';
 //import Card from "./Card";
 
 function CardImage(props) {
-  const isImageURL = props.image;
-  let listOfClasses = null;
 
-  if (props.effect) {
-    listOfClasses = "styleImage bw";
-  } else {
-    listOfClasses = "styleImage";
-  }
-
-  if (isImageURL) {
     return (
-      <div className={listOfClasses} onClick={props.onClick}>
-        <img
-          style={{ width: props.width + "px", marginTop: "-8%" }}
+      <div className="styleImage">
+        <img className="styleImageerror"
           src={props.image}
-          alt="Seattle"
-        />
+          alt='사진 ㄱㄱ'
+          />
       </div>
     );
-  }
-  return null;
+
 }
 
 /*
@@ -72,21 +61,39 @@ class TextList extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { users: [], isLoading: true };
-    //this.remove = this.remove.bind(this);
+    this.state = { users: [], isLoading: true, imageURL: [] };
+    this.remove = this.remove.bind(this);
   }
 
 
-  componentDidMount() {
+  async componentDidMount() {
     this.setState({ isLoading: true });
 
-    fetch('api/data')
+    await fetch('/api/data')
       .then(response => response.json())
-      .then(data => this.setState({ users: data, isLoading: false }));
+      .then(data => this.setState({ users: data, isLoading: false }))
 
   }
 
   async remove(id) {
+
+
+    await fetch(`/api/upload/delete/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      redirect: 'follow'
+    }).then(
+      success => console.log(success, 'success file') // Handle the success response object
+    ).catch(
+      error => console.log(error, 'er file') // Handle the error response object
+    )
+
+
+
+
     await fetch(`/api/datum/${id}`, {
       method: 'DELETE',
       headers: {
@@ -111,18 +118,19 @@ class TextList extends Component {
     }
 
     const eventsList = users.map((user, index) => {
+
       return (
 
-        <div style={{ width: this.props.width + "px" }} key={index}>
+        <div style={{ width: '350px'}} key={index}>
           <div className="styleCard">
             <CardImage
-              image={user.image}
+              image={'https://openimageforcathrina.s3.ap-northeast-2.amazonaws.com/images/'+user.id}
               width={user.width}
-              effect={user.bwEffect}
-              onClick={user.toggleEffect}
             />
 
+
             <div className="styleCardContent">
+              <p>{user.id}</p>
               <p className="styleCardName">{user.username}</p>
               <p className="styleCardTitle">{user.usertitle}</p>
               <p className="styleCardText">{user.usertext}</p>
