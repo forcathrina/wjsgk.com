@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink, Button } from 'reactstrap';
 
 import { Link } from 'react-router-dom';
-
+import './Navbar.css'
 import '../node_modules/bootstrap/dist/css/bootstrap.css';
 
 export default class AppNavbar extends Component {
@@ -20,7 +20,7 @@ export default class AppNavbar extends Component {
 
   render() {
     return <Navbar color="dark" dark expand="md">
-      
+
       <NavbarBrand tag={Link} to="/">게시판 홈</NavbarBrand>
       <NavbarToggler onClick={this.toggle} />
       <Collapse isOpen={this.state.isOpen} navbar>
@@ -32,9 +32,15 @@ export default class AppNavbar extends Component {
             <NavLink href="https://github.com/forcathrina/wjsgk.com/releases" target="_blank">GitHub</NavLink>
           </NavItem>
         </Nav>
+
         <Nav>
-          <Button outline color="success" tag={Link} to="/data/new">새 글 쓰기</Button>   
+          <Button className="btn-margin" outline color="info" tag={Link} to="/chat">채팅하기</Button>
         </Nav>
+        <Nav>
+          <Button className="btn-margin" outline color="success" tag={Link} to="/data/new">새 글 쓰기</Button>
+        </Nav>
+
+
       </Collapse>
     </Navbar>;
   }
