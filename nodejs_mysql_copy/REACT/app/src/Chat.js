@@ -3,10 +3,12 @@ import React, { Component } from 'react'
 import ChatInput from './ChatInput'
 import ChatMessage from './ChatMessage'
 
+import AppNavbar from './AppNavbar';
+
 import './ChatBox.css'
 import { Container, Card,  } from 'reactstrap'
 
-const URL = 'ws://localhost:3030'
+const URL = 'ws://15.165.72.25:3030'
 
 class Chat extends Component {
 
@@ -26,7 +28,7 @@ class Chat extends Component {
     this.scrollToBottom = this.scrollToBottom.bind(this)
   }
 
-  ws = new WebSocket(URL)
+  ws = new WebSocket(URL, 'echo-protocol')
   scrollToBottom = () => {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
   }
@@ -229,6 +231,7 @@ class Chat extends Component {
   render() {
     return (
       <div>
+        <AppNavbar/>
 
         <Container>
           
@@ -239,7 +242,7 @@ class Chat extends Component {
               
 
               <div className="chat-messages">
-                {this.state.messages.reverse().map((message, index) =>
+                {this.state.messages.slice(0).reverse().map((message, index) =>
                   <ChatMessage
                     key={index}
                     message={message.message}
